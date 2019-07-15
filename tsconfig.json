@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es2018",
+        "lib": [
+            "es2018"
+        ],
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "declaration": true,
+        "inlineSources": true,
+        "outDir": "./dist",
+        "types": ["node"],
+        "typeRoots": ["./typings"]
+    },
+    "exclude": ["node_modules","test","dist"],
+    "include": ["./src/**/*"]
+}

@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+- 10.16.0
+- 12.4.0
+cache:
+  directories:
+  - node_modules
+install:
+- npm install
+script:
+- npm run build
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: hisco@googlegroups.com
+  api_key:
+    secure: GHNVq13wmnCZ8cUcLz/ZW9qAFDCGlxyhuLQxP2LA0AG9a05Qj7AF5wydr8/MBmNAZZUEHehWRdE4PZPJefhuZVeIhTyTd+dD2Y/O+63ZLNmIkqu2rWSRrBptWFNBSmkqBNqlKAnHQYuszxzpB8sT764jBCjt//TmQqbBDfVRW0Na7BrxqLB1b7zYiR+LiwLfGutW+HTsCLtrIF9syZaRhKUgcQo4snKlv1Ajc0GL6Sxk49eDgnQp0h253Zjwj6Fzl8Gl4J0FOVxqhwItx7kt45ZETaos1048LKH+CqhTVUfOWeoWEhvcdUlJK2lJNvrHxjzTUd1NzaC1MwYs37OxMyWeXOPUp3SUZ+lHH9a4i9hw97u8qBDk1mwIxdzumASzRemjkkYTfduUGDI/FGzZM+0zfXh+ba6vg5kyEr6bc179HihWiN1L7xPIz+VwfQAoRTOP1/i1dcM3IvcsNZkxW4xfjQp5vLc6WE6HkO+kj6KJxoWh1UsnHNewBVw+Ve3buRk/FSsg+Aj2mSId8XhODa8e1UoCDXvVTE+S5OoYPBuUpFDBfaL86zyJAiTATQRkVLvrtujeSSfj9/0w1KW19bsuijHk79RgYqXOw/6PsbaEvSItEfylklL+wHZM8qhy6hgIQZfQGUR7UKHhmtgYYCB6trG+Ed/nMTDkO4/Ipuc=
+  on:
+    branch: master
+    repo: hisco/stubz

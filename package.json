@@ -1,0 +1,40 @@
+{
+  "name": "stubz",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha --recursive --reporter spec",
+    "watch-test": "mocha --recursive --watch --reporter spec",
+    "test-ci": "istanbul cover ./node_modules/mocha/bin/_mocha test/**/*.js --report lcovonly -- -R spec && cat ./coverage/lcov.info"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "@types/node": "^12.6.2",
+    "chai": "4.2.0",
+    "chai-spies": "1.0.0",
+    "istanbul": "0.4.5",
+    "mocha": "6.1.4",
+    "typescript": "3.5.3"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hisco/stubz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hisco/stubz/issues"
+  },
+  "homepage": "https://github.com/hisco",
+  "author": "Eyald <hisco@googlegroups.com‬>",
+  "license": "MIT",
+  "dependencies": {
+    "@stubz/core": "0.0.5",
+    "express": "^4.17.1"
+  }
+}
