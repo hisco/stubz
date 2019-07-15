@@ -1,5 +1,5 @@
-import { StubzHTTPServer, StubzPluginContainer, StubzPlugin } from "@stubz/core";
-import { StubzRouterApplication } from "./express-router";
+import { StubzHTTPServer, StubzPluginContainer, StubzPlugin } from '@stubz/core';
+import { StubzRouterApplication } from './express-router';
 
 export class StubzExpress{
     stubzServer: StubzHTTPServer;

@@ -1,6 +1,6 @@
 # stubz-server
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/hisco/stubz-server.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/hisco/stubz.svg)](https://greenkeeper.io/)
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Test Coverage][coveralls-image]][coveralls-url]
@@ -16,9 +16,9 @@ To provide a simple but yet powerfull stubs solution to enable multi team/projec
 
   [MIT](LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/files-trace.svg
-[npm-url]: https://npmjs.org/package/files-trace
-[travis-image]: https://img.shields.io/travis/hisco/files-trace/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/hisco/files-trace
-[coveralls-image]: https://coveralls.io/repos/github/hisco/files-trace/badge.svg?branch=master
-[coveralls-url]: https://coveralls.io/github/hisco/files-trace?branch=master
+[npm-image]: https://img.shields.io/npm/v/stubz.svg
+[npm-url]: https://npmjs.org/package/fstubz
+[travis-image]: https://img.shields.io/travis/hisco/stubz/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/hisco/stubz
+[coveralls-image]: https://coveralls.io/repos/github/hisco/stubz/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/hisco/stubz?branch=master
