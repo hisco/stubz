@@ -34,7 +34,7 @@
   "author": "Eyald <hisco@googlegroups.com‬>",
   "license": "MIT",
   "dependencies": {
-    "@stubz/core": "0.0.5",
+    "@stubz/core": "0.0.6",
     "express": "^4.17.1"
   }
 }

@@ -9,7 +9,7 @@ export class StubzExpress{
     }:{
         ports: (number)[]
     }){
-        const stubzServer = this.stubzServer = new StubzHTTPServer({ports});
+        const stubzServer:any = this.stubzServer = new StubzHTTPServer({ports});
         StubzRouterApplication.setupServer(stubzServer);
         this.plugins = new StubzPluginContainer({
             stubzServer
