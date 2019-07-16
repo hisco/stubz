@@ -1,6 +1,6 @@
 {
   "name": "stubz",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,7 +34,7 @@
   "author": "Eyald <hisco@googlegroups.com‬>",
   "license": "MIT",
   "dependencies": {
-    "@stubz/core": "0.0.8",
+    "@stubz/core": "0.0.14",
     "express": "^4.17.1"
   }
 }

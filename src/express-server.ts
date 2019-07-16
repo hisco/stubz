@@ -1,25 +1,44 @@
-import { StubzHTTPServer, StubzPluginContainer, StubzPlugin } from '@stubz/core';
+import { StubzHTTPServer, StubzPluginContainer, StubzPlugin, StubzSimpleVariationSelector, StubzVariationSelector, StubzControl } from '@stubz/core';
 import { StubzRouterApplication } from './express-router';
+import { StubzExpressControl } from './express-control';
 
 export class StubzExpress{
     stubzServer: StubzHTTPServer;
-    plugins:StubzPluginContainer;
+    pluginsContainer:StubzPluginContainer;
+    variationSelector: StubzVariationSelector;
+    control: StubzExpressControl;
     constructor({
-        ports
+        ports,
+        adminPort
     }:{
-        ports: (number)[]
+        ports: (number|string)[],
+        adminPort?: (number|string)
     }){
-        const stubzServer:any = this.stubzServer = new StubzHTTPServer({ports});
+        const stubzServer = this.stubzServer = new StubzHTTPServer({ports});
         StubzRouterApplication.setupServer(stubzServer);
-        this.plugins = new StubzPluginContainer({
+        const pluginsContainer = new StubzPluginContainer({
+            stubzServer
+        });
+        const variationSelector = new StubzSimpleVariationSelector({
+            pluginsContainer,
+        });
+        this.pluginsContainer = pluginsContainer;
+        this.variationSelector = variationSelector;
+        if (adminPort!=undefined)
+        this.control = new StubzExpressControl({
+            port: adminPort,
+            pluginsContainer,
+            variationSelector,
             stubzServer
         })
-        
     }
     addPlugins(plugins: StubzPlugin[]){
-        this.plugins.addPlugins(plugins);
+        this.pluginsContainer.addPlugins(plugins);
     }
     async start(){
+        if (this.control){
+            await this.control.controlServer.start();
+        }
         return this.stubzServer.start();
     }
 }

@@ -19,6 +19,9 @@ export class StubzExpressRouter extends StubzRouter{
         router.clearRoutes = ()=>{
             this.clearRoutes();
         }
+        if (!name){
+            throw new Error('name must be provided');
+        }
         super({ name, route ,router});
     }
     clearRoutes():void{
