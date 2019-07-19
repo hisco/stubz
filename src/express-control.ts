@@ -47,7 +47,7 @@ export class StubzExpressControl extends StubzSimpleControl{
             }
             next();
         })
-        this.app.use(bodyParser);
+        this.app.use(bodyParser.json());
         this.app.get('/api/v1/plugins' ,(req,res)=>{
             const r =this.getPluginsStatus();
             pretty(res,r);
