@@ -5,7 +5,7 @@
 [![Build Status][travis-image]][travis-url]
 [![Test Coverage][coveralls-image]][coveralls-url]
 
-  Stubz server provides stubs
+  Powerful a
 # Stubz WIP
 It's still at the very first stages, help is welcomed.
 

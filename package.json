@@ -1,6 +1,6 @@
 {
   "name": "stubz",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -35,6 +35,7 @@
   "license": "MIT",
   "dependencies": {
     "@stubz/core": "0.0.14",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1"
   }
 }

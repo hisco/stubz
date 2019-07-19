@@ -1,5 +1,6 @@
 import { StubzSimpleControl, StubzServer, StubzPluginContainer, StubzVariationSelector, StubzHTTPServer } from '@stubz/core';
 import * as express from 'express';
+import * as bodyParser from 'body-parser';
 
 export class StubzExpressControl extends StubzSimpleControl{
     public readonly port:string|number;
@@ -28,11 +29,25 @@ export class StubzExpressControl extends StubzSimpleControl{
         });
         this.setupRouting()
     }
-    setupRouting(){
+    private setupRouting(){
+        this.setupV1Routing();
+    }
+    private setupV1Routing(){
         function pretty(res : any, r:any){
             res.set('content-type', 'application/json')
             res.send(JSON.stringify( r, null,2 ))
         }
+        this.app.use((req , res , next)=>{
+            res.set({
+                'Access-Control-Allow-Origin':'*',
+                "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE"
+            })
+            if (req.method == 'options'){
+                res.send('')
+            }
+            next();
+        })
+        this.app.use(bodyParser);
         this.app.get('/api/v1/plugins' ,(req,res)=>{
             const r =this.getPluginsStatus();
             pretty(res,r);
@@ -41,12 +56,37 @@ export class StubzExpressControl extends StubzSimpleControl{
             const r = this.variationSelector.getVarationsMap();
             pretty(res,r);
         })
+        this.app.patch('/api/v1/variations/:name/:status' ,(req,res)=>{
+            const variations = this.variationSelector.getVarationsMap();
+            variations[req.params.name] = req.params.status == 'true';
+            this.variationSelector.setVariationsByName(variations);
+            res.set(200);
+            pretty(res,this.variationSelector.getVarationsMap());
+        });
+        this.app.patch('/api/v1/variations' ,(req,res)=>{
+            const variations = this.variationSelector.getVarationsMap();
+            Object.keys(req.body).forEach((key)=>{
+                variations[key] = req.body[key];
+            })
+            this.variationSelector.setVariationsByName(variations);
+            res.set(200);
+            pretty(res,this.variationSelector.getVarationsMap());
+        });
+        this.app.put('/api/v1/variations' ,(req,res)=>{
+            const variations:any = {};
+            Object.keys(req.body).forEach((key)=>{
+                variations[key] = req.body[key];
+            })
+            this.variationSelector.setVariationsByName(variations);
+            res.set(200);
+            pretty(res,this.variationSelector.getVarationsMap());
+        });
         //For now to ease dev
         this.app.all('/api/v1/variations/:name/:status' ,(req,res)=>{
             const variations = this.variationSelector.getVarationsMap();
             variations[req.params.name] = req.params.status == 'true';
             this.variationSelector.setVariationsByName(variations);
-            res.set(204);
+            res.set(200);
             pretty(res,this.variationSelector.getVarationsMap());
         })
     }
