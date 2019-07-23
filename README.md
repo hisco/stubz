@@ -39,7 +39,7 @@ const {StubzExpressRouter} = require('stubz');
 const dogNamesRouter = new StubzExpressRouter({
   /*
   You will need to provide a uniq name for that router,
-  In the need future you will be able to control the router,
+  In the near future you will be able to control the router,
   And this will be the ID of the router control
   */
   name:'dogs',
@@ -50,13 +50,6 @@ const dogNamesRouter = new StubzExpressRouter({
 
 Add routes to it, very similar to express router / app
 ```js
-//Express route
-dogNamesRouter.post('/' ,(res,res)=>{
-  res.status(201);
-  res.send('');
-})
-.defaultOn();
-
 //Stubz shortcuts
 dogNamesRouter.get('/' ,{
     statusCode : 200,
@@ -64,8 +57,36 @@ dogNamesRouter.get('/' ,{
 })
 .setOption('twoDogs')
 .defaultOn();
+
+//Express route
+dogNamesRouter.post('/' ,(res,res)=>{
+  res.status(201);
+  res.send('');
+})
+.defaultOn();
+```
+# Control via config stubz file
+* It's highly recommended to add your stubz config file to git ingore (Default: `./stubz.json`.
+
+Enable a specific stubs
+```json
+{
+    "variations":{
+        "twoDogs": true, 
+      }
+}
+```
+Disable a specific route
+```json
+{
+    "variations":{
+        "twoDogs": false, 
+      }
+}
 ```
 
+# Soon HTTP and UI control
+WIP...
 ## License
 
   [MIT](LICENSE)
