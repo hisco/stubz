@@ -19,7 +19,7 @@
     "chai": "4.2.0",
     "chai-spies": "1.0.0",
     "istanbul": "0.4.5",
-    "mocha": "6.1.4",
+    "mocha": "6.2.0",
     "typescript": "3.5.3"
   },
   "keywords": [],
