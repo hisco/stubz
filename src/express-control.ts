@@ -7,24 +7,29 @@ export class StubzExpressControl extends StubzSimpleControl{
     public readonly controlServer: StubzHTTPServer;
     public readonly app: express.Application;
     constructor({
-            port,
+            expressControl,
             stubzServer, 
             pluginsContainer,
             variationSelector 
         }: {
-        port: number|string,
+        expressControl:{
+            port: number|string
+        }
         stubzServer: StubzServer;
         pluginsContainer: StubzPluginContainer;
         variationSelector: StubzVariationSelector;
     }){
         super({ stubzServer, pluginsContainer, variationSelector });
 
-        this.port = port;
+        if (!expressControl){
+            expressControl = <any>{};
+        }
+        this.port = expressControl.port;
 
         this.app = express();
         this.app.disable('etag')
         this.controlServer = new StubzHTTPServer({
-            ports:[port] ,
+            ports:[this.port] ,
             requestListener : this.app
         });
         this.setupRouting()
@@ -43,7 +48,7 @@ export class StubzExpressControl extends StubzSimpleControl{
                 "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE"
             })
             if (req.method == 'options'){
-                res.send('')
+                return res.send('')
             }
             next();
         })
