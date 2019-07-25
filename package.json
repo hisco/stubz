@@ -1,6 +1,6 @@
 {
   "name": "stubz",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,7 @@
     "chai": "4.2.0",
     "chai-spies": "1.0.0",
     "istanbul": "0.4.5",
-    "mocha": "6.1.4",
+    "mocha": "6.2.0",
     "typescript": "3.5.3"
   },
   "keywords": [],
