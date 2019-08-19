@@ -14,7 +14,7 @@
     "test-ci": "istanbul cover ./node_modules/mocha/bin/_mocha test/**/*.js --report lcovonly -- -R spec && cat ./coverage/lcov.info"
   },
   "devDependencies": {
-    "@types/express": "^4.17.0",
+    "@types/express": "4.17.0",
     "@types/node": "^12.6.2",
     "chai": "4.2.0",
     "chai-spies": "1.0.0",
